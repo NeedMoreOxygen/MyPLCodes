@@ -8,12 +8,9 @@ namespace HomeWork5
 {
     class Program
     {
-        static string voteElligibility(int age)
+        static bool voteElligibility(int age)
         {
-            if (age >= 18)
-                return "Is Elligible";
-            else
-                return "Is Not Elligible";
+            return age >= 18;
         }
         static void Main(string[] args)
         {

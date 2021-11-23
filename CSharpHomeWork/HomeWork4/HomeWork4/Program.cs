@@ -10,10 +10,7 @@ namespace HomeWork4
     {
         static bool isEven(int a)
         {
-            if (a % 2 == 0)
-                return true;
-            else
-                return false;
+            return a % 2 == 0;
 
         }
         static void Main(string[] args)
