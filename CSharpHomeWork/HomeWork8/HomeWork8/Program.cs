@@ -10,7 +10,7 @@ namespace HomeWork8
     {
         static void Main(string[] args)
         {
-            Console.Write("Введите название месяца на русском: ");
+            Console.Write("Введите название месяца на русском языке: ");
             string s = Console.ReadLine();
             switch (s)
             {
