@@ -1,0 +1,6 @@
+C:\Users\Admin\source\repos\HomeWork12\HomeWork12\bin\Debug\HomeWork12.exe.config
+C:\Users\Admin\source\repos\HomeWork12\HomeWork12\bin\Debug\HomeWork12.exe
+C:\Users\Admin\source\repos\HomeWork12\HomeWork12\bin\Debug\HomeWork12.pdb
+C:\Users\Admin\source\repos\HomeWork12\HomeWork12\obj\Debug\HomeWork12.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\HomeWork12\HomeWork12\obj\Debug\HomeWork12.exe
+C:\Users\Admin\source\repos\HomeWork12\HomeWork12\obj\Debug\HomeWork12.pdb
