@@ -1,0 +1,10 @@
+C:\Users\Admin\source\repos\myRestaurant\myRestaurant\bin\Debug\myRestaurant.exe.config
+C:\Users\Admin\source\repos\myRestaurant\myRestaurant\bin\Debug\myRestaurant.exe
+C:\Users\Admin\source\repos\myRestaurant\myRestaurant\bin\Debug\myRestaurant.pdb
+C:\Users\Admin\source\repos\myRestaurant\myRestaurant\obj\Debug\myRestaurant.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\myRestaurant\myRestaurant\obj\Debug\myRestaurant.Form1.resources
+C:\Users\Admin\source\repos\myRestaurant\myRestaurant\obj\Debug\myRestaurant.Properties.Resources.resources
+C:\Users\Admin\source\repos\myRestaurant\myRestaurant\obj\Debug\myRestaurant.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\myRestaurant\myRestaurant\obj\Debug\myRestaurant.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\myRestaurant\myRestaurant\obj\Debug\myRestaurant.exe
+C:\Users\Admin\source\repos\myRestaurant\myRestaurant\obj\Debug\myRestaurant.pdb
