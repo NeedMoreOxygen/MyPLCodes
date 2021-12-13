@@ -11,11 +11,13 @@ namespace myRestaurant
         int copyQuantity;
         string copyItem;
         int? copyQuality;
-        int news = 0;
         bool anyReq = false;
+        int news = 0;
+        int preps = 0;
         public object NewRequest(int quantity, string menuItem)
         {
             news++;
+            preps = news - 1;
             anyReq = true;
             copyQuantity = quantity;
             copyItem = menuItem;
@@ -52,13 +54,16 @@ namespace myRestaurant
         {
             if (!anyReq)
             {
-                throw new Exception("No Previous Requests!");
+                throw new Exception("No Previous Requests Yet!");
             }
             else
             {
+                news++;
+                preps = news - 1;
                 if (copyItem == "Egg")
                 {
                     EggOrder eggCopy = new EggOrder(copyQuantity);
+                    eggCopy.quality = copyQuality;
                     return eggCopy;
                 }
                 else
@@ -81,35 +86,42 @@ namespace myRestaurant
         }
         public string PrepareFood(object order)
         {
-            if(order is ChickenOrder)
+            preps++;
+            if (preps > news)
             {
-                int i;
-                for(i = 0; i < ((ChickenOrder)order).GetQuantity(); i++) {
-                    ((ChickenOrder)order).CutUp();
-                }
-                ((ChickenOrder)order).Cook();
-                return i + " Chickens Are Cooked!";
+                throw new Exception("Emplyee Can't Cook The Already Prepared Order!");
             }
-            else
-            {
-                string s = "";
-                int i;
-                for (i = 0; i < ((EggOrder)order).GetQuantity(); i++)
+            else {
+                if (order is ChickenOrder)
                 {
-                    try
+                    int i;
+                    for (i = 0; i < ((ChickenOrder)order).GetQuantity(); i++)
                     {
-                        ((EggOrder)order).Crack();
+                        ((ChickenOrder)order).CutUp();
                     }
-                    catch(Exception ex1)
-                    {
-                        s = ex1.Message;
-                    }
-                    ((EggOrder)order).DiscardShell();
+                ((ChickenOrder)order).Cook();
+                    return i + " Chickens Are Cooked!";
                 }
-                ((EggOrder)order).Cook();
-                s = i + " " + s + "Eggs Are Cooked!";
-                return s;
-            }
-        }
+                else
+                {
+                    string s = "";
+                    int i;
+                    for (i = 0; i < ((EggOrder)order).GetQuantity(); i++)
+                    {
+                        try
+                        {
+                            ((EggOrder)order).Crack();
+                        }
+                        catch (Exception ex1)
+                        {
+                            s = ex1.Message;
+                        }
+                        ((EggOrder)order).DiscardShell();
+                    }
+                    ((EggOrder)order).Cook();
+                    s = i + " " + s + " Eggs Are Cooked!";
+                    return s;
+                }
+            }        }
     }
 }

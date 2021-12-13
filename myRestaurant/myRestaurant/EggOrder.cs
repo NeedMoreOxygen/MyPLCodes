@@ -10,7 +10,7 @@ namespace myRestaurant
     {
         static Random r = new Random();
         int quantity = 0;
-        int quality = r.Next(1, 100);
+        public int? quality;
         public static int instances = 0;
         public EggOrder(int quantity)
         {
@@ -23,6 +23,7 @@ namespace myRestaurant
         }
         public int? GetQuality()
         {
+            quality = r.Next(1, 100);
             if(instances % 2 == 0 && instances != 0)
             {
                 return null;

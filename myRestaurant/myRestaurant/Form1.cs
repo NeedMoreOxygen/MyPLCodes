@@ -13,8 +13,6 @@ namespace myRestaurant
     public partial class Form1 : Form
     {
         Employee order = new Employee();
-        int orders = 0;
-        int preps = 0;
         object myObj1;
         public Form1()
         {
@@ -38,8 +36,6 @@ namespace myRestaurant
 
         private void button1_Click(object sender, EventArgs e)
         {
-            orders++;
-            preps = orders - 1;
             if (radioButton1.Checked)
             {
                 myObj1 = order.NewRequest(Convert.ToInt32(textBox1.Text), "Chicken");
@@ -59,17 +55,9 @@ namespace myRestaurant
 
         private void button3_Click(object sender, EventArgs e)
         {
-            preps++;
             try
             {
-                if (preps > orders)
-                {
-                    throw new Exception("Emplyee Can't Cook The Already Prepared Order!");
-                }
-                else
-                {
-                    label5.Text += order.PrepareFood(myObj1) + "\n";
-                }
+                label5.Text += order.PrepareFood(myObj1) + "\n";
             }
             catch(Exception ex3)
             {
@@ -79,7 +67,6 @@ namespace myRestaurant
 
         private void button2_Click(object sender, EventArgs e)
         {
-            orders++;
             try
             {
                 myObj1 = order.CopyRequest();
@@ -92,6 +79,11 @@ namespace myRestaurant
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }
