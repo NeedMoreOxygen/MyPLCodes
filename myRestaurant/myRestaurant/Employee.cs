@@ -11,13 +11,15 @@ namespace myRestaurant
         int copyQuantity;
         string copyItem;
         int? copyQuality;
+        int news = 0;
         bool anyReq = false;
         public object NewRequest(int quantity, string menuItem)
         {
+            news++;
             anyReq = true;
             copyQuantity = quantity;
             copyItem = menuItem;
-            if ((EggOrder.instances + ChickenOrder.instances) % 3 == 2 && (EggOrder.instances + ChickenOrder.instances) != 0)
+            if (news % 3 == 0)
             {
                 if (menuItem == "Chicken")
                 {
@@ -105,7 +107,7 @@ namespace myRestaurant
                     ((EggOrder)order).DiscardShell();
                 }
                 ((EggOrder)order).Cook();
-                s = i + " " + s + " Eggs Are Cooked!";
+                s = i + " " + s + "Eggs Are Cooked!";
                 return s;
             }
         }
