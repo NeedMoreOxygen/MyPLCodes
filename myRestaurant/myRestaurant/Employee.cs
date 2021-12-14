@@ -100,11 +100,11 @@ namespace myRestaurant
                         ((ChickenOrder)order).CutUp();
                     }
                 ((ChickenOrder)order).Cook();
-                    return i + " Chickens Are Cooked!";
+                    return i + " Chicken Are Cooked!";
                 }
                 else
                 {
-                    string s = "";
+                    string s = " ";
                     int i;
                     for (i = 0; i < ((EggOrder)order).GetQuantity(); i++)
                     {
@@ -119,7 +119,7 @@ namespace myRestaurant
                         ((EggOrder)order).DiscardShell();
                     }
                     ((EggOrder)order).Cook();
-                    s = i + " " + s + " Eggs Are Cooked!";
+                    s = (s == " ")? i + " " + s + "Eggs Are Cooked!" : i + " " + s + " Eggs Are Cooked!";
                     return s;
                 }
             }        }
