@@ -13,15 +13,19 @@ namespace myRestaurant
         int? copyQuality;
         bool anyReq = false;
         int news = 0;
+        int newReqS = 0;
         int preps = 0;
+        int fullReqs = 0;
         public object NewRequest(int quantity, string menuItem)
         {
+            fullReqs++;
             news++;
+            newReqS++;
             preps = news - 1;
             anyReq = true;
             copyQuantity = quantity;
             copyItem = menuItem;
-            if (news % 3 == 0)
+            if (newReqS % 3 == 0)
             {
                 if (menuItem == "Chicken")
                 {
@@ -60,6 +64,7 @@ namespace myRestaurant
             {
                 news++;
                 preps = news - 1;
+                fullReqs++;
                 if (copyItem == "Egg")
                 {
                     EggOrder eggCopy = new EggOrder(copyQuantity);
@@ -100,7 +105,7 @@ namespace myRestaurant
                         ((ChickenOrder)order).CutUp();
                     }
                 ((ChickenOrder)order).Cook();
-                    return i + " Chicken Are Cooked!";
+                    return fullReqs + ") " + i + " Chicken Are Cooked!";
                 }
                 else
                 {
@@ -119,7 +124,7 @@ namespace myRestaurant
                         ((EggOrder)order).DiscardShell();
                     }
                     ((EggOrder)order).Cook();
-                    s = (s == " ")? i + " " + s + "Eggs Are Cooked!" : i + " " + s + " Eggs Are Cooked!";
+                    s = (s == " ")? fullReqs + ") " + i + s + "Eggs Are Cooked!" : fullReqs + ") " + i + " " + s + " Eggs Are Cooked!";
                     return s;
                 }
             }        }

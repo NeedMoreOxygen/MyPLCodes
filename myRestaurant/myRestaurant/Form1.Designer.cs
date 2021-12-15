@@ -94,16 +94,17 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.Aqua;
+            this.textBox1.Font = new System.Drawing.Font("Modern No. 20", 10F);
             this.textBox1.Location = new System.Drawing.Point(134, 133);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(88, 20);
+            this.textBox1.Size = new System.Drawing.Size(88, 22);
             this.textBox1.TabIndex = 2;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button1.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Stencil", 13F, System.Drawing.FontStyle.Italic);
             this.button1.Location = new System.Drawing.Point(22, 172);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(253, 35);
