@@ -1,0 +1,10 @@
+C:\Users\Admin\source\repos\ComputerCenter\obj\Debug\ComputerCenter.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\ComputerCenter\obj\Debug\ComputerCenter.Form1.resources
+C:\Users\Admin\source\repos\ComputerCenter\obj\Debug\ComputerCenter.Properties.Resources.resources
+C:\Users\Admin\source\repos\ComputerCenter\obj\Debug\ComputerCenter.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\ComputerCenter\obj\Debug\ComputerCenter.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\ComputerCenter\bin\Debug\ComputerCenter.exe.config
+C:\Users\Admin\source\repos\ComputerCenter\bin\Debug\ComputerCenter.exe
+C:\Users\Admin\source\repos\ComputerCenter\bin\Debug\ComputerCenter.pdb
+C:\Users\Admin\source\repos\ComputerCenter\obj\Debug\ComputerCenter.exe
+C:\Users\Admin\source\repos\ComputerCenter\obj\Debug\ComputerCenter.pdb
