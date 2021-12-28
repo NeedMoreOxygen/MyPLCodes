@@ -1,0 +1,10 @@
+C:\Users\Admin\source\repos\ArrayHW4\bin\Debug\ArrayHW4.exe.config
+C:\Users\Admin\source\repos\ArrayHW4\bin\Debug\ArrayHW4.exe
+C:\Users\Admin\source\repos\ArrayHW4\bin\Debug\ArrayHW4.pdb
+C:\Users\Admin\source\repos\ArrayHW4\obj\Debug\ArrayHW4.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\ArrayHW4\obj\Debug\ArrayHW4.Form1.resources
+C:\Users\Admin\source\repos\ArrayHW4\obj\Debug\ArrayHW4.Properties.Resources.resources
+C:\Users\Admin\source\repos\ArrayHW4\obj\Debug\ArrayHW4.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\ArrayHW4\obj\Debug\ArrayHW4.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\ArrayHW4\obj\Debug\ArrayHW4.exe
+C:\Users\Admin\source\repos\ArrayHW4\obj\Debug\ArrayHW4.pdb

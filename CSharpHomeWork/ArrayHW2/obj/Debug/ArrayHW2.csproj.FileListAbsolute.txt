@@ -1,0 +1,7 @@
+C:\Users\Admin\source\repos\ArrayHW2\bin\Debug\ArrayHW2.exe.config
+C:\Users\Admin\source\repos\ArrayHW2\bin\Debug\ArrayHW2.exe
+C:\Users\Admin\source\repos\ArrayHW2\bin\Debug\ArrayHW2.pdb
+C:\Users\Admin\source\repos\ArrayHW2\obj\Debug\ArrayHW2.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\ArrayHW2\obj\Debug\ArrayHW2.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\ArrayHW2\obj\Debug\ArrayHW2.exe
+C:\Users\Admin\source\repos\ArrayHW2\obj\Debug\ArrayHW2.pdb
