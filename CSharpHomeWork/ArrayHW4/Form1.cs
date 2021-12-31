@@ -12,6 +12,7 @@ namespace ArrayHW4
 {
     public partial class Form1 : Form
     {
+        static int cars = 0;
         Admin workDay = new Admin();
         string brand = "";
         string model = "";
@@ -44,7 +45,6 @@ namespace ArrayHW4
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             string addition = "";
             foreach (RadioButton rb in groupBox1.Controls.OfType<RadioButton>())
             {
@@ -65,33 +65,14 @@ namespace ArrayHW4
             }
             if (textBox4.Text != "")
                 addition += $" - {textBox4.Text}";
-            workDay.Register(brand, model, licensePlate, driverName, addition);
-            listBox1.Items.Add($"{driverName} - {brand} - {model} - {licensePlate}{addition}\n");
+            string s = workDay.Register(brand, model, licensePlate, driverName, addition);
+            cars++;
+            listBox1.Items.Add($"{cars}) {s}");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < workDay.newCars.Length; i++)
-            {
-                workDay.DriveToDushanbe();
-                listBox2.Items.Add($"Машина №{i + 1} Приехала В Душанбе\n");
-            }
-            listBox2.Items.Add("\n");
-            for (int i = 1; i <= 3; i++)
-            {
-                for(int j = 0; j < workDay.newCars.Length; j++)
-                {
-                    workDay.NextLoop();
-                    listBox2.Items.Add($"Машина №{j + 1} Проехала {i}-ый Круг\n");
-                }
-                listBox2.Items.Add("\n");
-            }
-            listBox2.Items.Add("\n");
-            for (int i = 0; i < workDay.newCars.Length; i++)
-            {
-                workDay.DriveToKhujand();
-                listBox2.Items.Add($"Машина №{i + 1} Приехала В Худжанд\n");
-            }
+            label10.Text += $"{workDay.Drive()}";
         }
     }
 }

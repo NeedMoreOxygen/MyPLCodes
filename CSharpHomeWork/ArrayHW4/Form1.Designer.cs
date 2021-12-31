@@ -66,8 +66,8 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.listBox2 = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -212,10 +212,10 @@
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(18, 71);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(46, 17);
+            this.radioButton3.Size = new System.Drawing.Size(49, 17);
             this.radioButton3.TabIndex = 11;
             this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Audi";
+            this.radioButton3.Text = "Lada";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // radioButton2
@@ -420,7 +420,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(458, 38);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(425, 186);
+            this.listBox1.Size = new System.Drawing.Size(425, 134);
             this.listBox1.TabIndex = 16;
             // 
             // label7
@@ -435,19 +435,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(422, 242);
+            this.label8.Location = new System.Drawing.Point(419, 206);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(45, 13);
             this.label8.TabIndex = 18;
             this.label8.Text = "Results:";
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(425, 259);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(458, 238);
-            this.listBox2.TabIndex = 19;
             // 
             // label9
             // 
@@ -459,13 +451,22 @@
             this.label9.TabIndex = 20;
             this.label9.Text = "IIIaMaH\'S Work Center";
             // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label10.Location = new System.Drawing.Point(422, 223);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(471, 286);
+            this.label10.TabIndex = 21;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 518);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.listBox2);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.listBox1);
@@ -534,8 +535,8 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }
 
