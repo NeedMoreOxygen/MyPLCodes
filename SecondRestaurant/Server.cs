@@ -37,13 +37,13 @@ namespace SecondRestaurant
         {
             int chickenQuantity = 0;
             int eggQuantity = 0;
-            for (int i = 0; i < this.tableOrder.Length; i++)
+            for (int i = 0; i < tableOrder.Length; i++)
             {
-                for (int j = 0; j < this.tableOrder[i].Length; j++)
+                for (int j = 0; j < tableOrder[i].Length; j++)
                 {
-                    if (this.tableOrder[i][j] == (Server.Table)0)
+                    if (tableOrder[i][j] == (Server.Table)0)
                         chickenQuantity++;
-                    if (this.tableOrder[i][j] == (Server.Table)1)
+                    if (tableOrder[i][j] == (Server.Table)1)
                         eggQuantity++;
                 }
             }
