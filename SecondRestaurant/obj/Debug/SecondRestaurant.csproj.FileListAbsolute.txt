@@ -1,0 +1,10 @@
+C:\Users\Admin\source\repos\SecondRestaurant\obj\Debug\SecondRestaurant.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\SecondRestaurant\obj\Debug\SecondRestaurant.Form1.resources
+C:\Users\Admin\source\repos\SecondRestaurant\obj\Debug\SecondRestaurant.Properties.Resources.resources
+C:\Users\Admin\source\repos\SecondRestaurant\obj\Debug\SecondRestaurant.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\SecondRestaurant\obj\Debug\SecondRestaurant.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\SecondRestaurant\bin\Debug\SecondRestaurant.exe.config
+C:\Users\Admin\source\repos\SecondRestaurant\bin\Debug\SecondRestaurant.exe
+C:\Users\Admin\source\repos\SecondRestaurant\bin\Debug\SecondRestaurant.pdb
+C:\Users\Admin\source\repos\SecondRestaurant\obj\Debug\SecondRestaurant.exe
+C:\Users\Admin\source\repos\SecondRestaurant\obj\Debug\SecondRestaurant.pdb
