@@ -8,11 +8,15 @@ namespace SecondRestaurant
 {
     class Server
     {
+        int chickenQuantity = 0;
+        int eggQuantity = 0;
         public enum Table { Chicken, Egg, Coffee, Cola, Tea };
         Table[][] tableOrder = new Table[0][];
         int quality;
-        public void Receive(int eggCount, int chickCount, string drink)
+        public void Receive(int chickCount, int eggCount, string drink)
         {
+            chickenQuantity += chickCount;
+            eggQuantity += eggCount;
             Array.Resize(ref tableOrder, tableOrder.Length + 1);
             if (drink == "No drink")
             {
@@ -35,29 +39,19 @@ namespace SecondRestaurant
         }
         public void Send()
         {
-            int chickenQuantity = 0;
-            int eggQuantity = 0;
-            for (int i = 0; i < tableOrder.Length; i++)
-            {
-                for (int j = 0; j < tableOrder[i].Length; j++)
-                {
-                    if (tableOrder[i][j] == (Server.Table)0)
-                        chickenQuantity++;
-                    if (tableOrder[i][j] == (Server.Table)1)
-                        eggQuantity++;
-                }
-            }
             Cook cook = new Cook();
             if (chickenQuantity > 0)
             {
                 cook.Submit(chickenQuantity, "Chicken");
                 cook.PrepareFood("Chicken");
+                chickenQuantity = 0;
             }
             if (eggQuantity > 0)
             {
                 cook.Submit(eggQuantity, "Egg");
                 cook.PrepareFood("Egg");
                 quality = cook.GetQuality();
+                eggQuantity = 0;
             }
         }
         public string Serve()

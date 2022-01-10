@@ -34,7 +34,7 @@ namespace SecondRestaurant
                 int chickCount = Convert.ToInt32(textBox1.Text);
                 int eggCount = Convert.ToInt32(textBox2.Text);
                 string drink = comboBox1.Text;
-                server.Receive(eggCount, chickCount, drink);
+                server.Receive(chickCount, eggCount, drink);
                 button2.Enabled = true;
             }
         }
