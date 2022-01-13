@@ -11,16 +11,23 @@ namespace SecondRestaurant
         Chicken chicken;
         Egg egg;
         int quality;
-        public void Submit(int quantity, string menuItem)
+        public Meal Submit(int quantity, string menuItem)
         {
             if (menuItem == "Chicken")
+            {
                 chicken = new Chicken(quantity);
+                return chicken;
+            }
             else
+            {
                 egg = new Egg(quantity);
+                quality = egg.GetQuality();
+                return egg;
+            }
         }
-        public void PrepareFood(string menuItem)
+        public void PrepareFood(Meal order)
         {
-            if(menuItem == "Chicken")
+            if (order is Chicken)
             {
                 for (int i = 0; i < chicken.GetQuantity(); i++)
                     chicken.CutUp();
@@ -30,9 +37,9 @@ namespace SecondRestaurant
             {
                 for (int i = 0; i < egg.GetQuantity(); i++)
                 {
+                    egg.Crack();
                     egg.DiscardShell();
                 }
-                quality = egg.GetQuality();
                 egg.Cook();
             }
         }

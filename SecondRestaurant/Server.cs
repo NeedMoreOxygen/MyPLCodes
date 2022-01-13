@@ -8,6 +8,9 @@ namespace SecondRestaurant
 {
     class Server
     {
+        bool everyThinkIsOk = false;
+        Egg egg;
+        Chicken chicken;
         int chickenQuantity = 0;
         int eggQuantity = 0;
         public enum Table { Chicken, Egg, Coffee, Cola, Tea };
@@ -19,9 +22,7 @@ namespace SecondRestaurant
             eggQuantity += eggCount;
             Array.Resize(ref tableOrder, tableOrder.Length + 1);
             if (drink == "No drink")
-            {
                 Array.Resize(ref tableOrder[tableOrder.Length - 1], eggCount + chickCount);
-            }
             else
             {
                 Array.Resize(ref tableOrder[tableOrder.Length - 1], eggCount + chickCount + 1);
@@ -42,15 +43,15 @@ namespace SecondRestaurant
             Cook cook = new Cook();
             if (chickenQuantity > 0)
             {
-                cook.Submit(chickenQuantity, "Chicken");
-                cook.PrepareFood("Chicken");
+                chicken = (Chicken)cook.Submit(chickenQuantity, "Chicken");
+                cook.PrepareFood(chicken);
                 chickenQuantity = 0;
             }
             if (eggQuantity > 0)
             {
-                cook.Submit(eggQuantity, "Egg");
-                cook.PrepareFood("Egg");
+                egg = (Egg)cook.Submit(eggQuantity, "Egg");
                 quality = cook.GetQuality();
+                cook.PrepareFood(egg);
                 eggQuantity = 0;
             }
         }
@@ -68,9 +69,11 @@ namespace SecondRestaurant
                     {
                         case (Table)0:
                             chickCount++;
+                            chicken.SubtractQuantity();
                             break;
                         case (Table)1:
                             eggCount++;
+                            egg.SubtractQuantity();
                             break;
                         case (Table)2:
                             drink = "Coffee";
@@ -89,7 +92,9 @@ namespace SecondRestaurant
                 else
                 {
                     if (chickCount > 0)
+                    {
                         s += $"{chickCount} Chicken";
+                    }
                     if (eggCount > 0)
                     {
                         if (chickCount > 0)
@@ -107,8 +112,10 @@ namespace SecondRestaurant
                         s += drink;
                     }
                 }
-                s += "\n";
+                s += $"\n";
             }
+            if (egg.GetQuantity() == 0 && chicken.GetQuantity() == 0)
+                everyThinkIsOk = true;
             tableOrder = new Table[0][];
             return s;
         }

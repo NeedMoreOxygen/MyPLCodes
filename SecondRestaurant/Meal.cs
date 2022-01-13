@@ -17,5 +17,9 @@ namespace SecondRestaurant
         {
             return this.quantity;
         }
+        public void SubtractQuantity()
+        {
+            quantity--;
+        }
     }
 }
