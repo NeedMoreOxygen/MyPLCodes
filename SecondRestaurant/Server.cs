@@ -15,7 +15,6 @@ namespace SecondRestaurant
         int eggQuantity = 0;
         public enum Table { Chicken, Egg, Coffee, Cola, Tea };
         Table[][] tableOrder = new Table[0][];
-        int quality;
         public void Receive(int chickCount, int eggCount, string drink)
         {
             chickenQuantity += chickCount;
@@ -28,7 +27,7 @@ namespace SecondRestaurant
                 Array.Resize(ref tableOrder[tableOrder.Length - 1], eggCount + chickCount + 1);
                 tableOrder[tableOrder.Length - 1][tableOrder[tableOrder.Length - 1].Length - 1] = (drink == "Coffee") ? (Table)2 : (drink == "Cola") ? (Table)3 : (Table)4;
             }
-            int j; //Out of loop because need also in another for() loop
+            int j;
             for (j = 0; j < chickCount; j++)
             {
                 tableOrder[tableOrder.Length - 1][j] = (Table)0;
@@ -50,7 +49,6 @@ namespace SecondRestaurant
             if (eggQuantity > 0)
             {
                 egg = (Egg)cook.Submit(eggQuantity, "Egg");
-                quality = cook.GetQuality();
                 cook.PrepareFood(egg);
                 eggQuantity = 0;
             }
@@ -118,10 +116,6 @@ namespace SecondRestaurant
                 everyThinkIsOk = true;
             tableOrder = new Table[0][];
             return s;
-        }
-        public int GetQuality()
-        {
-            return quality;
         }
     }
 }

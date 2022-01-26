@@ -17,6 +17,8 @@ namespace SecondRestaurant
         {
             return this.quantity;
         }
+        public void Cook() { }
+        virtual public void PrepareFood(){ }
         public void SubtractQuantity()
         {
             quantity--;

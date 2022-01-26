@@ -13,6 +13,14 @@ namespace SecondRestaurant
             this.quantity = quantity;
         }
         public void CutUp() { }
-        public void Cook() { }
+        public override void PrepareFood() 
+        {
+            int n = GetQuantity();
+            for (int i = 0; i <= n; i++)
+            {
+                CutUp();
+            }
+            Cook();
+        }
     }
 }

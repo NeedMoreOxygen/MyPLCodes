@@ -9,17 +9,21 @@ namespace SecondRestaurant
     class Egg : Meal
     {
         static Random r = new Random();
-        int quality;
         public Egg(int quantity) : base(quantity)
         {
-            quality = r.Next(76, 100);
-        }
-        public int GetQuality()
-        {
-            return quality;
+            this.quantity = quantity;
         }
         public void Crack() { }
         public void DiscardShell() { }
-        public void Cook() { }
+        override public void PrepareFood()
+        {
+            int n = GetQuantity();
+            for(int i = 0; i <= n; i++)
+            {
+                Crack();
+                DiscardShell();
+            }
+            Cook();
+        }
     }
 }

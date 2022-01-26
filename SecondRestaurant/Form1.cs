@@ -42,14 +42,6 @@ namespace SecondRestaurant
         private void button2_Click(object sender, EventArgs e)
         {
             server.Send();
-            if (server.GetQuality() != 0)
-            {
-                label6.Text = $"{server.GetQuality()}/100";
-            }
-            else
-            {
-                label6.Text = $"No eggs ordered :(";
-            }
             label4.Text += "The table's order is successfulyy accepted!\n";
             button2.Enabled = false;
             button1.Enabled = false;
