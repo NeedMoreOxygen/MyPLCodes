@@ -1,0 +1,10 @@
+C:\Users\Admin\source\repos\ThirdRestaurant\bin\Debug\ThirdRestaurant.exe.config
+C:\Users\Admin\source\repos\ThirdRestaurant\bin\Debug\ThirdRestaurant.exe
+C:\Users\Admin\source\repos\ThirdRestaurant\bin\Debug\ThirdRestaurant.pdb
+C:\Users\Admin\source\repos\ThirdRestaurant\obj\Debug\ThirdRestaurant.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\ThirdRestaurant\obj\Debug\ThirdRestaurant.Form1.resources
+C:\Users\Admin\source\repos\ThirdRestaurant\obj\Debug\ThirdRestaurant.Properties.Resources.resources
+C:\Users\Admin\source\repos\ThirdRestaurant\obj\Debug\ThirdRestaurant.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\ThirdRestaurant\obj\Debug\ThirdRestaurant.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\ThirdRestaurant\obj\Debug\ThirdRestaurant.exe
+C:\Users\Admin\source\repos\ThirdRestaurant\obj\Debug\ThirdRestaurant.pdb
