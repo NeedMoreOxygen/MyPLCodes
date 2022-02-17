@@ -18,7 +18,7 @@ namespace ThirdRestaurant
                 Array.Resize<IMenuItem>(ref table[customer - 1], table[customer - 1].Length + 1);
             table[customer - 1][table[customer - 1].Length - 1] = i;
         }
-        public CookedFood[] this[IMenuItem i]
+        public IMenuItem[] this[IMenuItem i]
         {
             get
             {
@@ -65,8 +65,8 @@ namespace ThirdRestaurant
                 CookedFood[] orders = new CookedFood[0];
                 for (int i = 0; i < table[customer].Length; i++)
                 {
-                    Array.Resize<CookedFood>(ref orders, orders.Length + 1);
-                    orders[orders.Length - 1] = (CookedFood)table[customer][i];
+                    Array.Resize<CookedFood>(ref orders, i+1);
+                    orders[i] = (CookedFood)table[customer][i];
                 }
                 return orders;
             }

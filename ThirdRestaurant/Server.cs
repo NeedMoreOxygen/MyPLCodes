@@ -11,25 +11,26 @@ namespace ThirdRestaurant
         Cook cook = new Cook();
         public int quality { get; private set; }
         TableRequests tableRequest = new TableRequests();
-        Drink drink;
-        string drinkName;
+        Drink[] drinks = new Drink[0];
         static int customer = 1;
         public void Receive(int chickenQuantity, int eggQuantity, string drink)
         {
-            this.drinkName = drink;
+            Array.Resize<Drink>(ref drinks, drinks.Length + 1);
             if (drink == "Tea")
-                this.drink = new Tea();
+                drinks[customer - 1] = new Tea();
             else if (drink == "Coca-Cola")
-                this.drink = new CocaCola();
+                drinks[customer - 1] = new CocaCola();
             else if (drink == "Pepsi")
-                this.drink = new Pepsi();
+                drinks[customer - 1] = new Pepsi();
+            else
+                drinks[customer - 1] = null;
 
-            for(int i = 1; i <= chickenQuantity; i++)
+            for (int i = 1; i <= chickenQuantity; i++)
             {
                 Chicken chicken = new Chicken();
                 tableRequest.Add(customer, chicken);
             }
-            for(int i = 1; i <= eggQuantity; i++)
+            for (int i = 1; i <= eggQuantity; i++)
             {
                 Egg egg = new Egg();
                 tableRequest.Add(customer, egg);
@@ -42,7 +43,7 @@ namespace ThirdRestaurant
             {
                 cook.Process(tableRequest);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -56,21 +57,33 @@ namespace ThirdRestaurant
             string s = "";
             for (int i = 0; i < tableRequest.table.Length; i++)
             {
+                CookedFood[] customRequest = tableRequest[i];
+                string currentDrink = "No drink";
                 int chickenQuantity = 0;
                 int eggQuantity = 0;
-                for (int j = 0; j < tableRequest[i].Length; j++)
+                for (int j = 0; j < customRequest.Length; j++)
                 {
-                    if (tableRequest[i][j] is Chicken)
+                    if (customRequest[j] is Chicken)
                         chickenQuantity++;
-                    else if (tableRequest[i][j] is Egg)
+                    else if (customRequest[j] is Egg)
                         eggQuantity++;
                 }
-                if(drink != null)
-                    drink.Obtain();
-                s += $"Customer {i} is served {chickenQuantity} chicken, {eggQuantity} egg, {drinkName}\n";
+                if (drinks[i] != null)
+                {
+                    drinks[i].Obtain();
+                    if (drinks[i] is Tea)
+                        currentDrink = "Tea";
+                    else if (drinks[i] is CocaCola)
+                        currentDrink = "Coca-Cola";
+                    else
+                        currentDrink = "Pepsi";
+                }
+                s += $"Customer {i} is served {chickenQuantity} chicken, {eggQuantity} egg, {currentDrink}\n";
+                currentDrink = "No drink";
             }
             s += $"Please enjoy your food!\n\n";
             tableRequest = new TableRequests();
+            drinks = new Drink[0];
             customer = 1;
             return s;
         }

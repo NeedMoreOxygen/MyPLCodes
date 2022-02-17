@@ -45,7 +45,6 @@ namespace ThirdRestaurant
                     egg.Cook();
                 }
             }
-            quality = 0;
         }
     }
 }
