@@ -1,0 +1,10 @@
+C:\Users\Admin\source\repos\FourthRestaurant\obj\Debug\FourthRestaurant.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\FourthRestaurant\obj\Debug\FourthRestaurant.Properties.Resources.resources
+C:\Users\Admin\source\repos\FourthRestaurant\obj\Debug\FourthRestaurant.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\FourthRestaurant\obj\Debug\FourthRestaurant.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\FourthRestaurant\bin\Debug\FourthRestaurant.exe.config
+C:\Users\Admin\source\repos\FourthRestaurant\bin\Debug\FourthRestaurant.exe
+C:\Users\Admin\source\repos\FourthRestaurant\bin\Debug\FourthRestaurant.pdb
+C:\Users\Admin\source\repos\FourthRestaurant\obj\Debug\FourthRestaurant.Form1.resources
+C:\Users\Admin\source\repos\FourthRestaurant\obj\Debug\FourthRestaurant.exe
+C:\Users\Admin\source\repos\FourthRestaurant\obj\Debug\FourthRestaurant.pdb
