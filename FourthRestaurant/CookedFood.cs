@@ -8,8 +8,10 @@ namespace FourthRestaurant
 {
     abstract class CookedFood : IMenuItem
     {
-        abstract public void Obtain();
         abstract public void Cook();
+
+        abstract public void Obtain();
+
         abstract public void Serve();
     }
 }

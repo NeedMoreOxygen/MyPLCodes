@@ -8,5 +8,8 @@ namespace FourthRestaurant
 {
     sealed class Tea : Drink, IMenuItem
     {
+        public override void Obtain() { /* obtaining tea... */ }
+
+        public override void Serve() { /* serving tea... */ }
     }
 }

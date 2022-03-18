@@ -8,7 +8,7 @@ namespace FourthRestaurant
 {
     abstract class Drink : IMenuItem
     {
-        public void Obtain() { /* obtaining... */ }
-        public void Serve() { /* serving... */ }
+        abstract public void Obtain();
+        abstract public void Serve();
     }
 }

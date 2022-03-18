@@ -11,10 +11,7 @@ namespace FourthRestaurant
         override public void Obtain() { /* obtainig an egg... */ }
         override public void Cook() { /* cooking an egg... */ }
         override public void Serve() { /* serving an egg... */ }
-        public void Crack()
-        {
-            /* cracking */
-        }
+        public void Crack() { /* cracking... */ }
         public void DiscardShell() { /* discarding shell... */ }
         public void Dispose() { }
     }
