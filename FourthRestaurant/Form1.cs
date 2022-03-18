@@ -63,11 +63,11 @@ namespace FourthRestaurant
     {
         public int Compare(IMenuItem x, IMenuItem y)
         {
-            if (x is Drink && !(y is Drink))
+            if (x is Drink)
             {
                 return 1;
             }
-            else if (!(x is Drink) && y is Drink)
+            else if (y is Drink)
             {
                 return -1;
             }

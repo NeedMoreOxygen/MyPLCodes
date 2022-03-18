@@ -14,6 +14,16 @@ namespace FourthRestaurant
         public event OrderReady Ready;
         public void Receive(int chickenQuantity, int eggQuantity, string drink, string name)
         {
+            for (int i = 1; i <= chickenQuantity; i++)
+            {
+                Chicken chicken = new Chicken();
+                tableRequest.Add<Chicken>(name);
+            }
+            for (int i = 1; i <= eggQuantity; i++)
+            {
+                Egg egg = new Egg();
+                tableRequest.Add<Egg>(name);
+            }
             switch (drink)
             {
                 case "Tea":
@@ -25,17 +35,6 @@ namespace FourthRestaurant
                 case "Cola":
                     tableRequest.Add<Cola>(name);
                     break;
-            }
-
-            for (int i = 1; i <= chickenQuantity; i++)
-            {
-                Chicken chicken = new Chicken();
-                tableRequest.Add<Chicken>(name);
-            }
-            for (int i = 1; i <= eggQuantity; i++)
-            {
-                Egg egg = new Egg();
-                tableRequest.Add<Egg>(name);
             }
         }
         public void Send()
