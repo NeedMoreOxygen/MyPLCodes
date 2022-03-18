@@ -8,7 +8,6 @@ namespace FourthRestaurant
 {
     class Server
     {
-        public int quality { get; private set; }
         private TableRequests tableRequest { get; set; } = new TableRequests();
 
         public delegate void OrderReady(TableRequests request);

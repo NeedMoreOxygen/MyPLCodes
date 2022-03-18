@@ -12,16 +12,16 @@ namespace FourthRestaurant
         public OrderProcessed Processed;
         public void Process(TableRequests table)
         {
-            var chickenRequest = table.Get<Chicken>();
-            foreach (Chicken chicken in chickenRequest)
+            var chickenList = table.Get<Chicken>();
+            foreach (Chicken chicken in chickenList)
             {
                 chicken.Obtain();
                 chicken.CutUp();
                 chicken.Cook();
             }
 
-            var eggRequest = table.Get<Egg>();
-            foreach (Egg egg in eggRequest)
+            var eggList = table.Get<Egg>();
+            foreach (Egg egg in eggList)
             {
                 egg.Obtain();
                 egg.Crack();

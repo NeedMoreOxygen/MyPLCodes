@@ -9,7 +9,7 @@ namespace FourthRestaurant
 {
     class TableRequests : IEnumerable<string>
     {
-        public Dictionary<string, List<IMenuItem>> table { get; } = new Dictionary<string, List<IMenuItem>>();
+        private Dictionary<string, List<IMenuItem>> table { get; } = new Dictionary<string, List<IMenuItem>>();
         public List<IMenuItem> this[string name]
         {
             get
@@ -17,7 +17,6 @@ namespace FourthRestaurant
                 return table[name];
             }
         }
-
         public IEnumerator<string> GetEnumerator()
         {
             foreach (var item in table.Keys)
