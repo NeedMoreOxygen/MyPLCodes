@@ -30,16 +30,16 @@ namespace FourthRestaurant
         }
         public List<T> Get<T>() where T : IMenuItem
         {
-            List<T> orders = new List<T>();
-            foreach (var item in table.Values)
+            List<T> menuItems = new List<T>();
+            foreach (var order in table.Values)
             {
-                foreach (var menuItem in item)
+                foreach (var menuItem in order)
                 {
                     if (menuItem is T)
-                        orders.Add((T)menuItem);
+                        menuItems.Add((T)menuItem);
                 }
             }
-            return orders;
+            return menuItems;
         }
         public void Add<T>(string name) where T : IMenuItem
         {

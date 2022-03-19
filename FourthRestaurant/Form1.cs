@@ -65,11 +65,11 @@ namespace FourthRestaurant
         {
             if (x is Drink)
             {
-                return 1;
+                return -1;
             }
             else if (y is Drink)
             {
-                return -1;
+                return 1;
             }
             else
             {
