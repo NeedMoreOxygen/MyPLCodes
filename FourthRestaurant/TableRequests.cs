@@ -9,6 +9,7 @@ namespace FourthRestaurant
 {
     class TableRequests : IEnumerable<string>
     {
+        public bool isBusy = false;
         private Dictionary<string, List<IMenuItem>> table { get; } = new Dictionary<string, List<IMenuItem>>();
         public List<IMenuItem> this[string name]
         {

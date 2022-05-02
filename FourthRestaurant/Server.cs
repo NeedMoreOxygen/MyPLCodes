@@ -1,74 +1,93 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FourthRestaurant
 {
     class Server
     {
-        private TableRequests tableRequest { get; set; } = new TableRequests();
+        List<Cook> cooks = new List<Cook>();
+        public Dictionary<Cook, TableRequests> service { get; private set; }
+        Cook cook1;
+        Cook cook2;
+        TableRequests table1;
+        TableRequests table2;
 
-        public delegate void OrderReady(TableRequests request);
-        public event OrderReady Ready;
+        public void Put()
+        {
+            service = new Dictionary<Cook, TableRequests>();
+            cook1 = new Cook();
+            cook2 = new Cook();
+            table1 = new TableRequests();
+            table2 = new TableRequests();
+            service.Add(cook1, table1);
+            service.Add(cook2, table2);
+        }
         public void Receive(int chickenQuantity, int eggQuantity, string drink, string name)
         {
+            TableRequests currentTable = service.Values.Where(i => i.isBusy == false).First();
             for (int i = 1; i <= chickenQuantity; i++)
             {
                 Chicken chicken = new Chicken();
-                tableRequest.Add<Chicken>(name);
+                currentTable.Add<Chicken>(name);
             }
             for (int i = 1; i <= eggQuantity; i++)
             {
                 Egg egg = new Egg();
-                tableRequest.Add<Egg>(name);
+                currentTable.Add<Egg>(name);
             }
             switch (drink)
             {
                 case "Tea":
-                    tableRequest.Add<Tea>(name);
+                    currentTable.Add<Tea>(name);
                     break;
                 case "Coffee":
-                    tableRequest.Add<Coffee>(name);
+                    currentTable.Add<Coffee>(name);
                     break;
                 case "Cola":
-                    tableRequest.Add<Cola>(name);
+                    currentTable.Add<Cola>(name);
                     break;
             }
         }
-        public void Send()
+        public async Task Send(Task task)
         {
-            Ready?.Invoke(tableRequest);
+            TableRequests currentTable = service.Values.Where(i => i.ToList().Count != 0).First();
+            Cook currentCook = service.Keys.Where(i => i.busy == false).First();
+            currentCook.busy = true;
+            currentCook.Process(currentTable);
+            currentCook.busy = false;
+            currentTable.isBusy = false;
+            await task;
+
         }
-        MenuItemComparer menuItemComparer = new MenuItemComparer();
-        public string Serve()
+        public async Task<string> Serve(Task task)
         {
+            TableRequests currentTable = service.Values.Where(i => i.Count() != 0 && i.isBusy == false).First();
+
             string s = "";
-            foreach (var name in tableRequest)
+            currentTable.OrderBy(i => i);
+            foreach (var name in currentTable)
             {
-                int chickenQuantity = 0;
-                int eggQuantity = 0;
+                var items = currentTable[name];
+                items = items.OrderBy(i => i is Drink).ToList();
                 s += $"{name} is served: ";
-                var items = tableRequest[name];
-                items.Sort(menuItemComparer);
-                foreach (var i in items)
-                {
-                    if (i is Chicken)
-                        chickenQuantity++;
-                    else if (i is Egg)
-                        eggQuantity++;
-                    else if (i is Tea)
-                        s += "Tea, ";
-                    else if (i is Coffee)
-                        s += "Coffee, ";
-                    else if (i is Cola)
-                        s += "Cola, ";
-                }
-                s += $"{chickenQuantity} chicken, {eggQuantity} egg\n";
+                int chickenQuantity = items.Where(i => i is Chicken).Count();
+                int eggQuantity = items.Where(i => i is Egg).Count();
+                int drinkCount = items.Where(i => i is Drink).Count();
+                if (drinkCount == 1)
+                    s += $"{drinkCount} drink, ";
+                if (eggQuantity > 0)
+                    s += $"{eggQuantity} eggs, ";
+                if (chickenQuantity > 0)
+                    s += $"{chickenQuantity} chicken\n";
             }
             s += $"Please enjoy your food!\n\n";
-            tableRequest = new TableRequests();
+            service.Remove(service.Keys.ToList()[service.Values.ToList().IndexOf(currentTable)]);
+            Cook cook = new Cook();
+            TableRequests table = new TableRequests();
+            service.Add(cook, table);
+            await task;
             return s;
         }
 

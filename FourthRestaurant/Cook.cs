@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace FourthRestaurant
 {
     class Cook
     {
-        public delegate void OrderProcessed();
-        public OrderProcessed Processed;
+        public bool busy;
         public void Process(TableRequests table)
         {
             var chickenList = table.Get<Chicken>();
@@ -17,7 +17,6 @@ namespace FourthRestaurant
             {
                 chicken.Obtain();
                 chicken.CutUp();
-                chicken.Cook();
             }
 
             var eggList = table.Get<Egg>();
@@ -28,7 +27,6 @@ namespace FourthRestaurant
                 egg.DiscardShell();
                 egg.Cook();
             }
-            Processed?.Invoke();
         }
     }
 }

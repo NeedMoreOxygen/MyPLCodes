@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+using System.Linq;
 
 namespace FourthRestaurant
 {
+
     public partial class Form1 : Form
     {
+        private readonly EventWaitHandle waitHandle = new AutoResetEvent(false);
+        Task task1;
         Server server = new Server();
-        Cook cook = new Cook();
         int iS = 0;
-        string text;
+        bool isDone = false;
         public Form1()
         {
             InitializeComponent();
-            server.Ready += (TableRequests orders) => cook.Process(orders);
-            cook.Processed += Cook_Processed;
-            button2.Enabled = false;
-        }
-        void Cook_Processed()
-        {
-            text = server.Serve();
+            server.Put();
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -27,13 +27,28 @@ namespace FourthRestaurant
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
+
             int chickCount = Convert.ToInt32(textBox1.Text);
             int eggCount = Convert.ToInt32(textBox2.Text);
             string name = textBox3.Text;
             string drink = comboBox1.Text;
-            server.Receive(chickCount, eggCount, drink, name);
+            if (server.service.Values.Where(i => i.isBusy == true).Count() == server.service.Values.Count)
+            {
+                isDone = false;
+                while(isDone == false)
+                {
+                    button1.Enabled = false;
+                    await Task.Delay(25);
+                }
+            }
+            button1.Enabled = true;
+            
+            lock (server)
+            {
+                task1 = Task.Run(() => server.Receive(chickCount, eggCount, drink, name));
+            }
             iS++;
             if (iS == 8)
                 button1.Enabled = false;
@@ -45,9 +60,18 @@ namespace FourthRestaurant
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
-            server.Send();
+            string text;
+            server.service.Values.Where(i => i.ToList().Count != 0).Last().isBusy = true;
+            await Task.Delay(2500);
+            lock (server)
+            {
+                Task task2 = task1.ContinueWith(server.Send);
+                text = task2.ContinueWith(server.Serve).Result.Result;
+                isDone = true;
+            }
+            await Task.Delay(2500);
             label6.Text += text;
             iS = 0;
             button2.Enabled = false;
@@ -57,24 +81,6 @@ namespace FourthRestaurant
         private void Form1_Load(object sender, EventArgs e)
         {
 
-        }
-    }
-    internal class MenuItemComparer : IComparer<IMenuItem>
-    {
-        public int Compare(IMenuItem x, IMenuItem y)
-        {
-            if (x is Drink)
-            {
-                return -1;
-            }
-            else if (y is Drink)
-            {
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
         }
     }
 }
