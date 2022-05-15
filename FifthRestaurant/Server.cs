@@ -7,26 +7,40 @@ namespace FourthRestaurant
 {
     class Server
     {
-        List<Cook> cooks = new List<Cook>();
-        public Dictionary<Cook, TableRequests> service { get; private set; }
+        public bool amBusy = false;
+        public List<Cook> cooks { get; set; }
+        public List<TableRequests> tables { get; set; }
         Cook cook1;
         Cook cook2;
+        Cook cook3;
         TableRequests table1;
         TableRequests table2;
-
+        TableRequests table3;
+        int currentCookIndex = -1;
+        public void Peek(int index)
+        {
+            currentCookIndex = index;
+        }
         public void Put()
         {
-            service = new Dictionary<Cook, TableRequests>();
+            cooks = new List<Cook>();
+            tables = new List<TableRequests>();
             cook1 = new Cook();
             cook2 = new Cook();
+            cook3 = new Cook();
             table1 = new TableRequests();
             table2 = new TableRequests();
-            service.Add(cook1, table1);
-            service.Add(cook2, table2);
+            table3 = new TableRequests();
+            cooks.Add(cook1);
+            cooks.Add(cook2);
+            cooks.Add(cook3);
+            tables.Add(table1);
+            tables.Add(table2);
+            tables.Add(table3);
         }
-        public void Receive(int chickenQuantity, int eggQuantity, string drink, string name)
+        public void Receive(int chickenQuantity, int eggQuantity, string drink, string name, int num)
         {
-            TableRequests currentTable = service.Values.Where(i => i.isBusy == false).First();
+            TableRequests currentTable = tables[num];
             for (int i = 1; i <= chickenQuantity; i++)
             {
                 Chicken chicken = new Chicken();
@@ -52,19 +66,14 @@ namespace FourthRestaurant
         }
         public async Task Send(Task task)
         {
-            TableRequests currentTable = service.Values.Where(i => i.ToList().Count != 0).First();
-            Cook currentCook = service.Keys.Where(i => i.busy == false).First();
-            currentCook.busy = true;
-            currentCook.Process(currentTable);
-            currentCook.busy = false;
-            currentTable.isBusy = false;
+            TableRequests currentTable = tables.Where(i => i.Count() > 0).Last();
+            cooks[currentCookIndex].Process(currentTable);
             await task;
 
         }
         public async Task<string> Serve(Task task)
         {
-            TableRequests currentTable = service.Values.Where(i => i.Count() != 0 && i.isBusy == false).First();
-
+            TableRequests currentTable = tables.Where(i => i.Count() > 0).First();
             string s = "";
             currentTable.OrderBy(i => i);
             foreach (var name in currentTable)
@@ -83,10 +92,9 @@ namespace FourthRestaurant
                     s += $"{chickenQuantity} chicken\n";
             }
             s += $"Please enjoy your food!\n\n";
-            service.Remove(service.Keys.ToList()[service.Values.ToList().IndexOf(currentTable)]);
-            Cook cook = new Cook();
+            tables.Remove(currentTable);
             TableRequests table = new TableRequests();
-            service.Add(cook, table);
+            tables.Add(table);
             await task;
             return s;
         }

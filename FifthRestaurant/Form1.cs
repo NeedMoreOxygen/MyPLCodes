@@ -11,15 +11,21 @@ namespace FourthRestaurant
 
     public partial class Form1 : Form
     {
-        private readonly EventWaitHandle waitHandle = new AutoResetEvent(false);
         Task task1;
-        Server server = new Server();
+        Server server1 = new Server();
+        Server server2 = new Server();
+        List<Server> servers = new List<Server>();
         int iS = 0;
         bool isDone = false;
         public Form1()
         {
             InitializeComponent();
-            server.Put();
+            servers.Add(server1);
+            servers.Add(server2);
+            foreach (var i in servers)
+            {
+                i.Put();
+            }
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -29,26 +35,39 @@ namespace FourthRestaurant
 
         private async void button1_Click(object sender, EventArgs e)
         {
-
+            Server currentS = servers.Where(i => i.tables.Where(b => b.isGone == false).Count() > 0).First();
             int chickCount = Convert.ToInt32(textBox1.Text);
             int eggCount = Convert.ToInt32(textBox2.Text);
             string name = textBox3.Text;
             string drink = comboBox1.Text;
-            if (server.service.Values.Where(i => i.isBusy == true).Count() == server.service.Values.Count)
+            int num = -1;
+            currentS.amBusy = true;
+            if (currentS.tables.Where(i => i.isGone == true).Count() == currentS.tables.Count)
             {
                 isDone = false;
-                while(isDone == false)
+                while (isDone == false)
                 {
                     button1.Enabled = false;
+                    button2.Enabled = false;
                     await Task.Delay(25);
                 }
             }
             button1.Enabled = true;
-            
-            lock (server)
+            button2.Enabled = true;
+            foreach (var i in currentS.tables)
             {
-                task1 = Task.Run(() => server.Receive(chickCount, eggCount, drink, name));
+                if (i.isGone == true)
+                {
+                    continue;
+                }
+                num = currentS.tables.IndexOf(i);
+                task1 = Task.Run(() => currentS.Receive(chickCount, eggCount, drink, name, num));
+                i.isBusy = true;
+                break;
             }
+
+
+
             iS++;
             if (iS == 8)
                 button1.Enabled = false;
@@ -62,16 +81,21 @@ namespace FourthRestaurant
 
         private async void button2_Click(object sender, EventArgs e)
         {
+            Server currentS = servers.Where(i => i.amBusy == true).First();
+            int numIndex = currentS.tables.IndexOf(currentS.tables.Where(i => i.Count() > 0 && i.isGone == false).First());
             string text;
-            server.service.Values.Where(i => i.ToList().Count != 0).Last().isBusy = true;
-            await Task.Delay(2500);
-            lock (server)
-            {
-                Task task2 = task1.ContinueWith(server.Send);
-                text = task2.ContinueWith(server.Serve).Result.Result;
-                isDone = true;
-            }
-            await Task.Delay(2500);
+            currentS.tables[numIndex].isGone = true;
+            Cook currentCook = currentS.cooks.Where(i => i.busy == false).First();
+            int index = currentS.cooks.IndexOf(currentCook);
+            currentCook.busy = true;
+            await Task.Delay(5000);
+            currentS.Peek(index);
+            Task task2 = task1.ContinueWith(currentS.Send);
+            currentCook.busy = false;
+            text = task2.ContinueWith(currentS.Serve).Result.Result;
+            currentS.amBusy = false;
+            await Task.Delay(5000);
+            isDone = true;
             label6.Text += text;
             iS = 0;
             button2.Enabled = false;

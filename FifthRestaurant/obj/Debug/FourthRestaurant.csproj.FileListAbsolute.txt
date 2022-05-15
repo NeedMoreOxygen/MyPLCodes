@@ -18,3 +18,13 @@ C:\Users\Admin\Downloads\MyPLCodes\FourthRestaurant\obj\Debug\FourthRestaurant.c
 C:\Users\Admin\Downloads\MyPLCodes\FourthRestaurant\obj\Debug\FourthRestaurant.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Downloads\MyPLCodes\FourthRestaurant\obj\Debug\FourthRestaurant.exe
 C:\Users\Admin\Downloads\MyPLCodes\FourthRestaurant\obj\Debug\FourthRestaurant.pdb
+C:\Users\Admin\Downloads\MyPLCodes\FifthRestaurant\bin\Debug\FourthRestaurant.exe.config
+C:\Users\Admin\Downloads\MyPLCodes\FifthRestaurant\bin\Debug\FourthRestaurant.exe
+C:\Users\Admin\Downloads\MyPLCodes\FifthRestaurant\bin\Debug\FourthRestaurant.pdb
+C:\Users\Admin\Downloads\MyPLCodes\FifthRestaurant\obj\Debug\FourthRestaurant.csprojAssemblyReference.cache
+C:\Users\Admin\Downloads\MyPLCodes\FifthRestaurant\obj\Debug\FourthRestaurant.Form1.resources
+C:\Users\Admin\Downloads\MyPLCodes\FifthRestaurant\obj\Debug\FourthRestaurant.Properties.Resources.resources
+C:\Users\Admin\Downloads\MyPLCodes\FifthRestaurant\obj\Debug\FourthRestaurant.csproj.GenerateResource.cache
+C:\Users\Admin\Downloads\MyPLCodes\FifthRestaurant\obj\Debug\FourthRestaurant.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Downloads\MyPLCodes\FifthRestaurant\obj\Debug\FourthRestaurant.exe
+C:\Users\Admin\Downloads\MyPLCodes\FifthRestaurant\obj\Debug\FourthRestaurant.pdb
