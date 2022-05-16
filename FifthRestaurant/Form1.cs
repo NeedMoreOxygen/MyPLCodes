@@ -16,10 +16,10 @@ namespace FourthRestaurant
         Server server2 = new Server();
         List<Server> servers = new List<Server>();
         int iS = 0;
-        bool isDone = false;
         public Form1()
         {
             InitializeComponent();
+            button2.Enabled = false;
             servers.Add(server1);
             servers.Add(server2);
             foreach (var i in servers)
@@ -35,6 +35,10 @@ namespace FourthRestaurant
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            while(servers.Where(i => i.tables.Where(b => b.isGone == true).Count() == 3).Count() == 3)
+            {
+                await Task.Delay(25);
+            }
             Server currentS = servers.Where(i => i.tables.Where(b => b.isGone == false).Count() > 0).First();
             int chickCount = Convert.ToInt32(textBox1.Text);
             int eggCount = Convert.ToInt32(textBox2.Text);
@@ -42,18 +46,6 @@ namespace FourthRestaurant
             string drink = comboBox1.Text;
             int num = -1;
             currentS.amBusy = true;
-            if (currentS.tables.Where(i => i.isGone == true).Count() == currentS.tables.Count)
-            {
-                isDone = false;
-                while (isDone == false)
-                {
-                    button1.Enabled = false;
-                    button2.Enabled = false;
-                    await Task.Delay(25);
-                }
-            }
-            button1.Enabled = true;
-            button2.Enabled = true;
             foreach (var i in currentS.tables)
             {
                 if (i.isGone == true)
@@ -65,9 +57,6 @@ namespace FourthRestaurant
                 i.isBusy = true;
                 break;
             }
-
-
-
             iS++;
             if (iS == 8)
                 button1.Enabled = false;
@@ -81,7 +70,12 @@ namespace FourthRestaurant
 
         private async void button2_Click(object sender, EventArgs e)
         {
+            button2.Enabled = false;
             Server currentS = servers.Where(i => i.amBusy == true).First();
+            while (currentS.tables.Where(i => i.Count() > 0 && i.isGone == false).Count() == 0)
+            {
+                await Task.Delay(25);
+            }
             int numIndex = currentS.tables.IndexOf(currentS.tables.Where(i => i.Count() > 0 && i.isGone == false).First());
             string text;
             currentS.tables[numIndex].isGone = true;
@@ -95,7 +89,6 @@ namespace FourthRestaurant
             text = task2.ContinueWith(currentS.Serve).Result.Result;
             currentS.amBusy = false;
             await Task.Delay(5000);
-            isDone = true;
             label6.Text += text;
             iS = 0;
             button2.Enabled = false;
