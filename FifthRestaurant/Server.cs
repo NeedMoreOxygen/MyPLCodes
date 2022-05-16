@@ -69,7 +69,6 @@ namespace FourthRestaurant
             TableRequests currentTable = tables.Where(i => i.Count() > 0).Last();
             cooks[currentCookIndex].Process(currentTable);
             await task;
-
         }
         public async Task<string> Serve(Task task)
         {
@@ -83,9 +82,9 @@ namespace FourthRestaurant
                 s += $"{name} is served: ";
                 int chickenQuantity = items.Where(i => i is Chicken).Count();
                 int eggQuantity = items.Where(i => i is Egg).Count();
-                int drinkCount = items.Where(i => i is Drink).Count();
-                if (drinkCount == 1)
-                    s += $"{drinkCount} drink, ";
+                Drink drink = (items.Where(i => i is Drink).Count()==1)? (Drink)items.Where(i => i is Drink).Single() : null;
+                if (drink != null)
+                    s += $"{drink.GetType().Name}, ";
                 if (eggQuantity > 0)
                     s += $"{eggQuantity} eggs, ";
                 if (chickenQuantity > 0)

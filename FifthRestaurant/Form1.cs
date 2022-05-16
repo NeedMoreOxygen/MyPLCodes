@@ -88,7 +88,7 @@ namespace FourthRestaurant
             currentCook.busy = false;
             text = task2.ContinueWith(currentS.Serve).Result.Result;
             currentS.amBusy = false;
-            await Task.Delay(5000);
+            await Task.Delay(3000);
             label6.Text += text;
             iS = 0;
             button2.Enabled = false;
