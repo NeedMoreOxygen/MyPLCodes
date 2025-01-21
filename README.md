@@ -28,7 +28,7 @@ This repository contains a collection of C# projects developed over the years us
    - Polished version with bug fixes and minor feature updates.
    - Prepares the project for practical use or demonstration.
 
-### 7. **ThirdRestaurant (NEW!)**
+### 7. **ThirdRestaurant**
    - Latest addition with multi-threading capabilities.
    - Handles concurrent tasks like order processing and cook management efficiently.
 
